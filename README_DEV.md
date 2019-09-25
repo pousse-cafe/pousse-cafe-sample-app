@@ -8,9 +8,7 @@
 
 ## Snapshot release
 
-Run the following command:
-
-    ./scripts/archetype_mvn.sh deploy
+Archetype is automatically generated and deployed.
 
 ## Other releases
 
