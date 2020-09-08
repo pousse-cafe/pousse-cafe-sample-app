@@ -5,6 +5,7 @@ import org.junit.Test;
 import poussecafe.mymodule.domain.ADomainEvent;
 import poussecafe.mymodule.domain.myaggregate.MyAggregate;
 import poussecafe.mymodule.domain.myaggregate.MyAggregateId;
+import poussecafe.mymodule.domain.myaggregate.MyAggregateRepository;
 
 import static org.junit.Assert.assertTrue;
 
@@ -28,11 +29,13 @@ public class MyAggregateCreationWithADomainEvent extends MyModuleTest {
     private ADomainEvent event;
 
     private void whenEventEmitted() {
-        emitDomainEvent(event);
+        issue(event);
     }
 
     private void thenAggregateCreated() {
-        Optional<MyAggregate> aggregate = getOptional(MyAggregate.class, event.identifier().value());
+        Optional<MyAggregate> aggregate = repository.getOptional(event.identifier().value());
         assertTrue(aggregate.isPresent());
     }
+
+    private MyAggregateRepository repository;
 }
