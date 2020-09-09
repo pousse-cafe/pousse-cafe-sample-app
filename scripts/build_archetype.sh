@@ -37,3 +37,4 @@ echo "Removing integration tests from archetype..."
 rm -rf src/main/resources/archetype-resources/src/it/
 rm -rf src/test/resources/projects
 rm -rf target/classes/archetype-resources/src/it/
+rm -rf target/test-classes/projects/
