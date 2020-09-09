@@ -7,7 +7,7 @@ addons:
 jdk:
 - oraclejdk11
 after_success:
-- mvn package
+- ./scripts/build_archetype.sh
 - ./can_auto_deploy.sh && ./scripts/archetype_mvn.sh deploy
 env:
   global:

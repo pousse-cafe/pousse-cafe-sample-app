@@ -1,10 +1,9 @@
 # Release
 
-1. ``mvn versions:set`` to change version
-2. ``mvn install`` to test packaging a last time before release
-3. ``mvn versions:commit`` to confirm version change
-4. ``git commit -am "Set version X.Y.Z-Q." && git push origin`` to create actual release commit (replace X.Y.Z-Q by actual version)
-5. ``mvn scm:tag`` to tag release commit and thus create a GitHub release (usually only for versions without qualifier)
+1. Change version manually in POM file.
+2. ``./scripts/build_archetype.sh`` to test the archetype a last time before release
+3. ``git commit -am "Set version X.Y.Z-Q." && git push origin`` to create actual release commit (replace X.Y.Z-Q by actual version)
+4. ``mvn scm:tag`` to tag release commit and thus create a GitHub release (usually only for versions without qualifier)
 
 # Deploy
 
@@ -16,8 +15,9 @@ Deployment is automatically handled by Travis (see .travis.yml for details).
 
 Deployment is manual (because of package signing).
 
-``mvn deploy -Ppousse-cafe-release`` where ``pousse-cafe-release`` profile enables the generation of source and 
-javadoc packages as well as the signing of all artifacts. Note that ``settings.xml`` file needs to contain related
+``./scripts/archetype_mvn.sh deploy -Ppousse-cafe-release`` where ``pousse-cafe-release`` profile enables
+the generation of source and javadoc packages as well as the signing of all artifacts. Note that ``settings.xml``
+file needs to contain related
 profile section to configure GPG. For instance:
 
     <profile>
@@ -27,10 +27,6 @@ profile section to configure GPG. For instance:
         <gpg.keyname>deployer_email_address</gpg.keyname>
       </properties>
     </profile>
-
-The archetype must be deployed separately:
-
-    ( cd pousse-cafe-sample-app ; ./scripts/archetype_mvn.sh deploy -Ppousse-cafe-release )
 
 After that:
 

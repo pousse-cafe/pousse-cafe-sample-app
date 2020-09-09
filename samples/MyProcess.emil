@@ -1,0 +1,13 @@
+process MyProcess
+
+ADomainEvent! -> F{MyAggregateFactory}[createAggregate]
+
+ACommand? -> Ru{DoSomethingRunner}
+    @MyAggregate[doSomething]:
+        :MyDomainEvent! -> .
+        :.
+
+AnotherDomainEvent! -> Ru{DoSomethingElseRunner}
+    @MyAggregate[doSomething]
+
+YetAnotherDomainEvent! -> Re{MyAggregateRepository}[remove]
