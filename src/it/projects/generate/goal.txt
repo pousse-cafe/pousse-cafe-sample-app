@@ -1,1 +1,1 @@
-compile pousse-cafe:import-process -DemilFile=samples/MyProcess.emil -DbasePackage=mymodule -DcodeFormatterProfile=samples/formatterProfile.xml -e
+compile pousse-cafe:import-process -DemilFile=samples/MyProcess.emil -e
