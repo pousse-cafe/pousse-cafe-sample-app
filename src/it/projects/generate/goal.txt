@@ -1,1 +1,1 @@
-compile pousse-cafe:import-process -DemilFile=samples/MyProcess.emil -e
+compile pousse-cafe:import-process -DemilFile=samples/MyProcess.emil compile pousse-cafe:validate -e

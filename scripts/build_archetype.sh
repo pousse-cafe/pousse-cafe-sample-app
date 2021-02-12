@@ -7,7 +7,7 @@ PC_VERSION=$(xmlstarlet sel -N "n=http://maven.apache.org/POM/4.0.0" -t -v "/n:p
 
 echo "Building archetype with version $VERSION (PC version $PC_VERSION)..."
 
-mvn archetype:create-from-project -Darchetype.properties=archetype.properties -Darchetype.keepParent=false \
+mvn clean archetype:create-from-project -Darchetype.properties=archetype.properties -Darchetype.keepParent=false \
 -Darchetype.encoding=UTF-8
 
 echo "Fixing archetype POM..."
